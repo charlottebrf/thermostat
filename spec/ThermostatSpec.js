@@ -40,22 +40,26 @@ describe('Thermostat', function(){
   });
 
   it("won't increment temperature if it's already at maximum temp", function() {
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
+    for (var u = 0; u < 6; u++) { thermostat.up(); }
     expect(thermostat.temperature).toEqual(25);
   });
 
   it("knows when it's at maximum temperature", function() {
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
-    thermostat.up();
+    for (var u = 0; u < 5; u++) { thermostat.up(); }
     expect(thermostat.isMaxTemp()).toEqual(true)
+  });
+
+  it('can be set back to 20 with a reset function', function() {
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
+
+  it('can report on its energy usage', function() {
+    expect(thermostat.energyReport()).toEqual('medium');
+    for (var u = 0; u < 6; u++) { thermostat.up(); }
+    expect(thermostat.energyReport()).toEqual('high');
+    for (var d = 0; d < 9; d++) { thermostat.down(); }
+    expect(thermostat.energyReport()).toEqual('low');
   });
 
 
