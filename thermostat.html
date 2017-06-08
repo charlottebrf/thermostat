@@ -16,7 +16,32 @@
         <button id="powersaving-on">PSM on</button>
         <button id="powersaving-off">PSM off</button>
       </p>
+
+      <br><button id="status">Status</button>
     </section>
+    <script>
+
+    function temp_up(thermostat) {
+    document.getElementById('temperature-up').onclick = function() {
+      thermostat.up();
+      document.getElementById('temperature').innerHTML = thermostat.temperature;
+      };
+    };
+
+    function get_status(thermostat) {
+    document.getElementById('status').onclick = function() {
+      alert(JSON.stringify(thermostat));
+      };
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var thermostat = new Thermostat;
+      temp_up(thermostat);
+      get_status(thermostat);
+
+  });
+
+    </script>
     <script src="src/Thermostat.js"></script>
   </body>
 </html>
