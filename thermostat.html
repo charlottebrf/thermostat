@@ -22,7 +22,8 @@
     <script>
 
     function defaultTemperature(thermostat) {
-      document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.default_temp;
+      thermostat.reset();
+      document.getElementById('temperature').innerHTML = "Temperature:" + thermostat.temperature;
     };
 
     function tempUp(thermostat) {
@@ -47,14 +48,22 @@
 
     function reset(thermostat) {
       document.getElementById('temperature-reset').onclick = function() {
-        document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.defaul_temp;
+        thermostat.reset();
+        document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
       };
     };
 
     function PowerSavingModeOn(thermostat) {
       document.getElementById('powersaving-on').onclick = function() {
-        thermostat.toggle_power_saving
+        thermostat.toggle_power_saving();
         document.getElementById('power-saving-status').innerHTML = 'on';
+      };
+    };
+
+    function PowerSavingModeOff(thermostat) {
+      document.getElementById('powersaving-off').onclick = function() {
+        thermostat.toggle_power_saving();
+        document.getElementById('power-saving-status').innerHTML = 'off';
       };
     };
 
@@ -65,7 +74,8 @@
       getStatus(thermostat);
       defaultTemperature(thermostat);
       reset(thermostat);
-      PowerSavingModeOn(thermostat);
+      PowerSavingModeOn(thermostats);
+      PowerSavingModeOff(thermostat);
   });
 
     </script>

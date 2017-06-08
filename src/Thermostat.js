@@ -19,7 +19,11 @@ Thermostat.prototype.up = function(){
 };
 
 Thermostat.prototype.down = function(){
-  this.temperature -= 1;
+  if (this.temperature > this.minimum_temp) {
+    this.temperature -= 1;
+  } else {
+    return;
+  }
 };
 
 Thermostat.prototype.toggle_power_saving = function() {

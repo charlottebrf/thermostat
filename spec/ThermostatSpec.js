@@ -49,6 +49,11 @@ describe('Thermostat', function(){
     expect(thermostat.isMaxTemp()).toEqual(true)
   });
 
+  it("won't decrement temperature if it's already at minimum temp", function() {
+    for (var u = 0; u <= 10; u++) { thermostat.down(); }
+    expect(thermostat.temperature).toEqual(10);
+  });
+
   it('can be set back to 20 with a reset function', function() {
     thermostat.reset();
     expect(thermostat.temperature).toEqual(20);
