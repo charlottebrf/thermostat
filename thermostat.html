@@ -21,24 +21,51 @@
     </section>
     <script>
 
-    function temp_up(thermostat) {
+    function defaultTemperature(thermostat) {
+      document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.default_temp;
+    };
+
+    function tempUp(thermostat) {
     document.getElementById('temperature-up').onclick = function() {
       thermostat.up();
-      document.getElementById('temperature').innerHTML = thermostat.temperature;
+      document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
       };
     };
 
-    function get_status(thermostat) {
+    function getStatus(thermostat) {
     document.getElementById('status').onclick = function() {
       alert(JSON.stringify(thermostat));
       };
     };
 
+    function tempDown(thermostat) {
+      document.getElementById('temperature-down').onclick = function() {
+        thermostat.down();
+        document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
+      };
+    };
+
+    function reset(thermostat) {
+      document.getElementById('temperature-reset').onclick = function() {
+        document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.defaul_temp;
+      };
+    };
+
+    function PowerSavingModeOn(thermostat) {
+      document.getElementById('powersaving-on').onclick = function() {
+        thermostat.toggle_power_saving
+        document.getElementById('power-saving-status').innerHTML = 'on';
+      };
+    };
+
     document.addEventListener("DOMContentLoaded", function() {
       var thermostat = new Thermostat;
-      temp_up(thermostat);
-      get_status(thermostat);
-
+      tempUp(thermostat);
+      tempDown(thermostat);
+      getStatus(thermostat);
+      defaultTemperature(thermostat);
+      reset(thermostat);
+      PowerSavingModeOn(thermostat);
   });
 
     </script>
