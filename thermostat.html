@@ -3,27 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat</title>
-    <script type="text/javascript" src="src/Thermostat.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div><p>Energy Usage is low/medium/high</p></div>
-    <div><p>Temperature: 20</p></div>
-
-    <div><form action="Thermostat.js">
-    <input type="submit" name="reset" value="reset">
-    </form></div>
-
-    <div><form action="Thermostat.js">
-    <input type="submit" name="Power saving mode" value="Power saving mode">
-    </form></div>
-
-    <div><form action="Thermostat.js">
-    <input type="submit" name="Up" value="Up">
-    </form></div>
-    <div><form action="Thermostat.js">
-    <input type="submit" name="Down" value="Down">
-    </form></div>
-
+    <section>
+      <h1 id="temperature"></h1>
+      <p>
+        <button id="temperature-up">+</button>
+        <button id="temperature-down">-</button>
+        <button id="temperature-reset">reset</button>
+        power saving mode is <span id="power-saving-status">on</span>
+        <button id="powersaving-on">PSM on</button>
+        <button id="powersaving-off">PSM off</button>
+      </p>
+    </section>
+    <script src="src/Thermostat.js"></script>
   </body>
 </html>
