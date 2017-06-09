@@ -1,12 +1,12 @@
 function defaultTemperature(thermostat) {
   thermostat.reset();
-  document.getElementById('temperature').innerHTML = "Temperature:" + thermostat.temperature;
+  document.getElementById('temperature').innerHTML = thermostat.temperature;
 };
 
 function tempUp(thermostat) {
 document.getElementById('temperature-up').onclick = function() {
   thermostat.up();
-  document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
+  document.getElementById('temperature').innerHTML = thermostat.temperature;
   };
 };
 
@@ -19,14 +19,14 @@ document.getElementById('status').onclick = function() {
 function tempDown(thermostat) {
   document.getElementById('temperature-down').onclick = function() {
     thermostat.down();
-    document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
+    document.getElementById('temperature').innerHTML = thermostat.temperature;
   };
 };
 
 function reset(thermostat) {
   document.getElementById('temperature-reset').onclick = function() {
     thermostat.reset();
-    document.getElementById('temperature').innerHTML = 'Temperature: ' + thermostat.temperature;
+    document.getElementById('temperature').innerHTML = thermostat.temperature;
   };
 };
 
@@ -51,9 +51,19 @@ function displayPowerMode(thermostat) {
 
 function updateTemperature(thermostat) {
   document.getElementById('temperature').innerHTML = thermostat.temperature;
-  console.log(thermostat.energyReport());
   document.getElementById('temperature').setAttribute("class", thermostat.energyReport());
 };
+
+$.get('http://api.openweathermap.org/data/2.5/weather?q=london&appid=a3d9eb01d4de82b9b8d0849ef604dbed', function(data) {
+  $('#city-temperature').text(data.main.temp);
+});
+
+$('#current-city').change(function() {
+  var city = $('#current-city').val();
+  $.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed', function(data) {
+    $('#city-temperature').text(data.main.temp);
+  });
+});
 
 document.addEventListener("DOMContentLoaded", function() {
   var thermostat = new Thermostat;

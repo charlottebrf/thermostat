@@ -7,7 +7,8 @@
   </head>
   <body>
     <section>
-      <h1 id="temperature"></h1>
+      <h1> Thermostat Temperature: <span id="temperature"></span></h1>
+      <h1>City Temperature: <span id="city-temperature"></span></h1>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
@@ -16,9 +17,18 @@
         <button id="powersaving-on">PSM on</button>
         <button id="powersaving-off">PSM off</button>
       </p>
-
+      <section>
+        <select id="current-city">
+          <option value="london">London</option>
+          <option value="paris">Paris</option>
+          <option value="madrid">Madrid</option>
+          <option value="rome">Rome</option>
+          <option value="athens">Athens</option>
+        </select>
+      </section>
       <br><button id="status">Status</button>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="interface.js"></script>
     <script src="src/Thermostat.js"></script>
   </body>
