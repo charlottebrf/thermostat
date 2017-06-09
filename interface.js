@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function() {
+  var thermostat = new Thermostat;
+  tempUp(thermostat);
+  tempDown(thermostat);
+  getStatus(thermostat);
+  defaultTemperature(thermostat);
+  reset(thermostat);
+  PowerSavingModeOn(thermostat);
+  PowerSavingModeOff(thermostat);
+  updateTemperature(thermostat);
+});
+
 function defaultTemperature(thermostat) {
   thermostat.reset();
   document.getElementById('temperature').innerHTML = thermostat.temperature;
@@ -6,7 +18,7 @@ function defaultTemperature(thermostat) {
 function tempUp(thermostat) {
 document.getElementById('temperature-up').onclick = function() {
   thermostat.up();
-  document.getElementById('temperature').innerHTML = thermostat.temperature;
+  updateTemperature(thermostat);
   };
 };
 
@@ -19,14 +31,14 @@ document.getElementById('status').onclick = function() {
 function tempDown(thermostat) {
   document.getElementById('temperature-down').onclick = function() {
     thermostat.down();
-    document.getElementById('temperature').innerHTML = thermostat.temperature;
+    updateTemperature(thermostat);
   };
 };
 
 function reset(thermostat) {
   document.getElementById('temperature-reset').onclick = function() {
     thermostat.reset();
-    document.getElementById('temperature').innerHTML = thermostat.temperature;
+    updateTemperature(thermostat);
   };
 };
 
@@ -72,16 +84,4 @@ $('#select-city').submit(function(event) {
   var city = $('#current-city').val();
   $('#city').text(city);
   displayWeather(city);
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  var thermostat = new Thermostat;
-  tempUp(thermostat);
-  tempDown(thermostat);
-  getStatus(thermostat);
-  defaultTemperature(thermostat);
-  reset(thermostat);
-  PowerSavingModeOn(thermostat);
-  PowerSavingModeOff(thermostat);
-  updateTemperature(thermostat);
 });
