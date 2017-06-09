@@ -54,15 +54,24 @@ function updateTemperature(thermostat) {
   document.getElementById('temperature').setAttribute("class", thermostat.energyReport());
 };
 
-$.get('http://api.openweathermap.org/data/2.5/weather?q=london&appid=a3d9eb01d4de82b9b8d0849ef604dbed', function(data) {
+function displayWeather(city) {
+  var url = 'http://api.openweathermap.org/data/2.5/weather?q=';
+  var token = '&appid=a3d9eb01d4de82b9b8d0849ef604dbed';
+  var units = '&units=metric';
+  $.get(url + city + token + units, function(data) {
+    $('#city-temperature').text(data.main.temp);
+  });
+};
+
+$.get('http://api.openweathermap.org/data/2.5/weather?q=london&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric', function(data) {
   $('#city-temperature').text(data.main.temp);
 });
 
-$('#current-city').change(function() {
+$('#select-city').submit(function(event) {
+  event.preventDefault();
   var city = $('#current-city').val();
-  $.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=a3d9eb01d4de82b9b8d0849ef604dbed', function(data) {
-    $('#city-temperature').text(data.main.temp);
-  });
+  $('#city').text(city);
+  displayWeather(city);
 });
 
 document.addEventListener("DOMContentLoaded", function() {

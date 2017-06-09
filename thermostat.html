@@ -7,8 +7,8 @@
   </head>
   <body>
     <section>
-      <h1> Thermostat Temperature: <span id="temperature"></span></h1>
-      <h1>City Temperature: <span id="city-temperature"></span></h1>
+      <h1>Thermostat Temperature: <span id="temperature"></span></h1>
+      <h1><span id="city">London</span> Temperature: <span id="city-temperature"></span></h1>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
@@ -18,13 +18,10 @@
         <button id="powersaving-off">PSM off</button>
       </p>
       <section>
-        <select id="current-city">
-          <option value="london">London</option>
-          <option value="paris">Paris</option>
-          <option value="madrid">Madrid</option>
-          <option value="rome">Rome</option>
-          <option value="athens">Athens</option>
-        </select>
+        <form id="select-city">
+          <input id="current-city" type="text" placeholder="Enter a city">
+          <input type="submit">
+        </form>
       </section>
       <br><button id="status">Status</button>
     </section>
