@@ -17,8 +17,8 @@ function defaultTemperature(thermostat) {
 
 function tempUp(thermostat) {
 document.getElementById('temperature-up').onclick = function() {
-  thermostat.up();
-  updateTemperature(thermostat);
+  // thermostat.up();
+  // updateTemperature(thermostat);
   };
 };
 
@@ -63,7 +63,8 @@ function displayPowerMode(thermostat) {
 
 function updateTemperature(thermostat) {
   document.getElementById('temperature').innerHTML = thermostat.temperature;
-  document.getElementById('temperature').setAttribute("class", thermostat.energyReport());
+  console.log(thermostat.energyReport());
+  // document.getElementById('temperature').setAttribute("class", thermostat.energyReport());
 };
 
 function displayWeather(city) {
