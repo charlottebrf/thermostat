@@ -17,8 +17,8 @@ function defaultTemperature(thermostat) {
 
 function tempUp(thermostat) {
 document.getElementById('temperature-up').onclick = function() {
-  // thermostat.up();
-  // updateTemperature(thermostat);
+  thermostat.up();
+  updateTemperature(thermostat);
   };
 };
 
