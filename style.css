@@ -1,3 +1,11 @@
-.eneryReport {
+.low {
+  color: green;
+}
 
+.medium {
+  color: black;
+}
+
+.high {
+  color: red;
 }

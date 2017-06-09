@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <section>
+    <section class="low">
       <h1 id="temperature"></h1>
       <p>
         <button id="temperature-up">+</button>
@@ -56,6 +56,7 @@
     function PowerSavingModeOn(thermostat) {
       document.getElementById('powersaving-on').onclick = function() {
         thermostat.toggle_power_saving();
+        thermostat.toggle_power_saving();
         document.getElementById('power-saving-status').innerHTML = 'on';
       };
     };
@@ -67,6 +68,21 @@
       };
     };
 
+    function displayPowerMode(thermostat) {
+      document.getElementById('powersaving-off').text
+    };
+
+    function updateTemperature(thermostat) {
+      document.getElementById('temperature').innerHTML = thermostat.temperature;
+      document.getElementById('temperature').setAttribute("class", thermostat.energyReport());
+    };
+
+//     function updateTemperature() {
+//   $('#temperature').text(thermostat.temperature);
+//   $('#temperature').attr('class', thermostat.energyUsage());
+// }
+
+
     document.addEventListener("DOMContentLoaded", function() {
       var thermostat = new Thermostat;
       tempUp(thermostat);
@@ -74,8 +90,9 @@
       getStatus(thermostat);
       defaultTemperature(thermostat);
       reset(thermostat);
-      PowerSavingModeOn(thermostats);
+      PowerSavingModeOn(thermostat);
       PowerSavingModeOff(thermostat);
+      updateTemperature(thermostat);
   });
 
     </script>
